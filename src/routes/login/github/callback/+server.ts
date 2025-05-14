@@ -1,6 +1,6 @@
 import { github } from "$lib/server/oauth";
 import { ObjectParser } from "@pilcrowjs/object-parser";
-import { error } from "@sveltejs/kit";
+import { error, redirect } from "@sveltejs/kit";
 import { createUser, getUserFromGitHubId } from "$lib/server/user";
 import { createSession, generateSessionToken, setSessionTokenCookie } from "$lib/server/session";
 
