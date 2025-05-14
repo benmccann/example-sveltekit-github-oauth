@@ -56,7 +56,7 @@ export function invalidateUserSessions(userId: number): void {
 export function setSessionTokenCookie(event: RequestEvent, token: string, expiresAt: Date): void {
 	event.cookies.set("session", token, {
 		path: "/",
-		secure: !dev || import.meta.env.PROD,
+		secure: !dev || event.url.protocol === "https",
 		expires: expiresAt
 	});
 }
@@ -64,7 +64,7 @@ export function setSessionTokenCookie(event: RequestEvent, token: string, expire
 export function deleteSessionTokenCookie(event: RequestEvent): void {
 	event.cookies.set("session", "", {
 		path: "/",
-		secure: !dev || import.meta.env.PROD,
+		secure: !dev || event.url.protocol === "https",
 		maxAge: 0
 	});
 }
